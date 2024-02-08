@@ -68,7 +68,7 @@ function App() {
 
     printWindow.document.write('</tbody></table>');
     printWindow.document.write('</div>');
-
+ 
     // Pie de página con la fecha
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleDateString('es-ES');
