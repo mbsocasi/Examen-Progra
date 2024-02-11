@@ -15,11 +15,10 @@ function ProductRow({ product, onDelete, onUpdate }) {
                     name: name,
                     description: description
                 })
-                .eq("id", product.id);
-
+                .eq("id", product.id)
+            
             if (error) throw error;
-            setEditing(false);
-            onUpdate();
+            window.location.reload();
         } catch (error) {
             alert(error.message);
         }
@@ -58,22 +57,25 @@ function ProductRow({ product, onDelete, onUpdate }) {
                     </>
                 ) : (
                     <>
-                        <Button size="sm" onClick={() => setEditing(false)}>
-                            Go Back
-                        </Button>
+                       <h4>Editing Product</h4>
+                        <Button size="sm" onClick={() => setEditing(false)}>Go Back</Button>
+                        <br></br>
+                        <Form.Label>Product Name</Form.Label>
                         <Form.Control
                             type="text"
                             id="name"
                             defaultValue={product.name}
                             onChange={(e) => setName(e.target.value)}
                         />
+                        <Form.Label>Product Description</Form.Label>
                         <Form.Control
                             type="text"
                             id="description"
                             defaultValue={product.description}
                             onChange={(e) => setDescription(e.target.value)}
                         />
-                        <Button onClick={() => updateProduct()}>Update Product</Button>
+                        <br></br>
+                        <Button onClick={() => updateProduct()}>Update Product in Supabase DB</Button>
                     </>
                 )}
             </td>
